@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:big_tip/big_tip.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,224 +25,33 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
-        body:
-            // Column(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //       Align(
-            //         alignment: Alignment.topRight,
-            //         child:Text(
-            //           'New',
-            //           style: TextStyle(color: Colors.blue),
-            //         ),
-            //       ),
-            //       Icon(
-            //         Icons.cake,
-            //         color: Colors.blue,
-            //         size: 80.0,
-            //       ),
-            //       Text(
-            //         'Banana Cake \n 40 \$',
-            //         textAlign: TextAlign.center,
-            //         style: TextStyle(color: Colors.blue),
-            //       )
-            //   ],
-            // ),
-
-            // Stack(
-            //   children: [
-            //     Container(
-            //       child: Positioned(
-            //         top: 20,
-            //         right: 20,
-            //         child: Text(
-            //           'New',
-            //           style: TextStyle(color: Colors.blue),
-            //         ),
-            //       )
-            //     ),
-            //     Container(
-            //       padding: EdgeInsets.all(20.0),
-            //       decoration: BoxDecoration(
-            //         border: Border.all(
-            //           width: 1,
-            //         ),
-            //       ),
-
-            //       child: Column(
-            //         children: [
-            //           Icon(
-            //             Icons.cake,
-            //             color: Colors.blue,
-            //             size: 80.0,
-            //           ),
-            //           Container(
-            //             margin: EdgeInsets.symmetric(vertical: 10.0),
-            //             padding: EdgeInsets.symmetric(vertical: 10.0),
-            //             color: Colors.blue,
-            //             child: Row(
-            //               children: [
-            //                 Expanded(
-            //                   child: Text('Banana Cake \n 40 \$',
-            //                   textAlign: TextAlign.center,
-            //                   style: TextStyle(color: Colors.white),
-            //                 ),
-            //                 )
-            //               ],
-            //             ),
-            //           ),
-            //         ]
-            //       )
-            //     ),
-            //   ]
-            // ),
-
-            Container(
+        body: Container(
           margin: EdgeInsets.all(10.0),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                padding: EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                    border: Border(
-                  left: BorderSide(
-                    color: Colors.blue,
-                    width: 4.0,
+            Expanded(
+              flex: 4,
+              child:Column(
+                children: [
+                  TileCake(
+                    text: 'Cake News',
                   ),
-                )),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Cake News',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 20),
+                  ListCakeHorizontal()
+                ],
+              )
+            ),
+            Expanded(
+              flex: 5,
+              child:Column(
+                children: [
+                  TileCake(
+                    text: 'Cake is bought a lot',
                   ),
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemExtent: 170,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 20,
-                  itemBuilder: (context, index) => Card(
-                    child: Stack(children: [
-                      Container(
-                          child: Positioned(
-                        top: 10,
-                        right: 10,
-                        child: Text(
-                          'New',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.cake,
-                                  color: Colors.blue,
-                                  size: 80.0,
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                    color: Colors.blue,
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Banana Cake \n 40 \$',
-                                            textAlign: TextAlign.center,
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ])),
-                    ]),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                padding: EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                    border: Border(
-                  left: BorderSide(
-                    color: Colors.blue,
-                    width: 4.0,
-                  ),
-                )),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Cake is bought a lot',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: GridView.builder(
-                  itemCount: 10,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) => Card(
-                    child: Stack(children: [
-                      Container(
-                          child: Positioned(
-                        top: 10,
-                        right: 10,
-                        child: Text(
-                          'Hot',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      )),
-                      Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.cake,
-                                  color: Colors.blue,
-                                  size: 80.0,
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Banana Cake \n 40 \$',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(color: Colors.blue),
-                                  ),
-                                ),
-                                Divider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.shopping_cart,
-                                        color: Colors.blue),
-                                    Text(
-                                      'Add to cart',
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                  ],
-                                ),
-                              ])),
-                    ]),
-                  ),
-                ),
-              ),
-            ],
+                  ListCakeVertical(),                   
+                ],
+              )
+            ),
+            ]
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -270,6 +78,167 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.blue,
               ),
             ]),
+      ),
+    );
+  }
+}
+
+class ListCakeHorizontal extends StatelessWidget {
+
+  /// Here is your constructor
+  ListCakeHorizontal({Key key});
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildListCakeHorizontal();
+  }
+
+  Widget _buildListCakeHorizontal() {
+    return Expanded(
+      child: ListView.builder(
+        itemExtent: 170,
+        scrollDirection: Axis.horizontal,
+        itemCount: 20,
+        itemBuilder: (context, index) => Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
+                    child: Text(
+                      'New',
+                      style: TextStyle(color: Colors.blue),
+                    ),                  
+                  ),
+                ),
+                Expanded(
+                  child:Icon(
+                    Icons.cake,
+                    color: Colors.blue,
+                    size: 60.0,
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    color: Colors.blue,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Banana Cake \n 40 \$',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+        )
+      ),
+    );
+  }
+}
+
+class ListCakeVertical extends StatelessWidget {
+
+  /// Here is your constructor
+  ListCakeVertical({Key key});
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildListCakeVertical();
+  }
+
+  Widget _buildListCakeVertical() {
+    return Expanded(
+      child: GridView.builder(
+        itemCount: 10,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) => Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
+                      child: Text(
+                        'Hot',
+                        style: TextStyle(color: Colors.blue),
+                      ),                  
+                    ),
+                  ),
+                  Icon(
+                    Icons.cake,
+                    color: Colors.blue,
+                    size: 60.0,
+                  ),
+                  Text(
+                    'Banana Cake \n 40 \$',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.shopping_cart,
+                        color: Colors.blue
+                      ),
+                      Text(
+                        'Add to cart',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          ),
+      )
+    );
+  }
+}
+
+class TileCake extends StatelessWidget {
+  final String text;
+
+  /// Here is your constructor
+  TileCake({Key key, this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildTitle(this.text);
+  }
+
+  Widget _buildTitle(String text) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.0),
+      padding: EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+          border: Border(
+        left: BorderSide(
+          color: Colors.blue,
+          width: 4.0,
+        ),
+      )),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          this.text,
+          textAlign: TextAlign.left,
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }
