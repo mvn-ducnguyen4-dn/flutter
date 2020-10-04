@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  static const String titleAppBar = 'Introduce Cake';
+  static const String titleCakeNews = 'Cake News';
+  static const String titleCakeIsBoughtALog = 'Cake is bought a lot';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
           leading: Builder(builder: (BuildContext context) {
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
             );
           }),
           centerTitle: true,
-          title: const Text('Introduce Cake'),
+          title: const Text(titleAppBar),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -29,55 +32,56 @@ class MyApp extends StatelessWidget {
           margin: EdgeInsets.all(10.0),
           child: Column(
             children: [
-            Expanded(
-              flex: 4,
-              child:Column(
-                children: [
-                  TileCake(
-                    text: 'Cake News',
-                  ),
-                  ListCakeHorizontal()
-                ],
-              )
-            ),
-            Expanded(
-              flex: 5,
-              child:Column(
-                children: [
-                  TileCake(
-                    text: 'Cake is bought a lot',
-                  ),
-                  ListCakeVertical(),                   
-                ],
-              )
-            ),
+              Expanded(
+                flex: 4,
+                child:Column(
+                  children: [
+                    TileCake(
+                      text: titleCakeNews,
+                    ),
+                    ListCakeHorizontal()
+                  ],
+                )
+              ),
+              Expanded(
+                flex: 5,
+                child:Column(
+                  children: [
+                    TileCake(
+                      text: titleCakeIsBoughtALog,
+                    ),
+                    ListCakeVertical(),                   
+                  ],
+                )
+              ),
             ]
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed, // This is all you need!
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Home'),
-                backgroundColor: Colors.blue,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.cake),
-                title: Text('My Cake'),
-                backgroundColor: Colors.blue,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.contacts),
-                title: Text('Contact'),
-                backgroundColor: Colors.blue,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                title: Text('Settings'),
-                backgroundColor: Colors.blue,
-              ),
-            ]),
+          type: BottomNavigationBarType.fixed, // This is all you need!
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.cake),
+              title: Text('My Cake'),
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.contacts),
+              title: Text('Contact'),
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
+              backgroundColor: Colors.blue,
+            ),
+          ]
+        ),
       ),
     );
   }
@@ -235,7 +239,7 @@ class TileCake extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          this.text,
+          text,
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20),
         ),
