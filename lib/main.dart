@@ -94,52 +94,58 @@ class ListCakeHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildListCakeHorizontal();
+    return _buildListCakeHorizontal(context);
   }
 
-  Widget _buildListCakeHorizontal() {
+  Widget _buildListCakeHorizontal(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemExtent: 170,
+        itemExtent: (MediaQuery.of(context).size.width - 20) / 2,
         scrollDirection: Axis.horizontal,
         itemCount: 20,
         itemBuilder: (context, index) => Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
               children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-                    child: Text(
-                      'New',
-                      style: TextStyle(color: Colors.blue),
-                    ),                  
-                  ),
-                ),
-                Expanded(
-                  child:Icon(
-                    Icons.cake,
-                    color: Colors.blue,
-                    size: 60.0,
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    color: Colors.blue,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            'Banana Cake \n 40 \$',
-                            textAlign: TextAlign.center,
-                            style:
-                                TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex:6,
+                      // child:Image.network('https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+                      //   fit: BoxFit.fill,
+                      // ),
+                      child:Icon(
+                        Icons.cake,
+                        color: Colors.blue,
+                        size: 70.0,
+                      ),
                     ),
+                    Expanded(
+                      flex:2,
+                      child: Container(
+                        color: Colors.blue,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Banana Cake \n 40 \$',
+                                textAlign: TextAlign.center,
+                                style:
+                                    TextStyle(color: Colors.white),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Text(
+                    'New',
+                    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -168,49 +174,73 @@ class ListCakeVertical extends StatelessWidget {
           crossAxisCount: 2,
         ),
         itemBuilder: (context, index) => Card(
-            child: Column(
+          child: Stack(
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-                      child: Text(
-                        'Hot',
-                        style: TextStyle(color: Colors.blue),
-                      ),                  
+                Expanded(
+                  flex:6,
+                  // child:Image.network('https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg',
+                  //   fit: BoxFit.fill,
+                  // ),
+                  child:Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children:[
+                    Icon(
+                      Icons.cake,
+                      color: Colors.blue,
+                      size: 70.0,
                     ),
-                  ),
-                  Icon(
-                    Icons.cake,
-                    color: Colors.blue,
-                    size: 60.0,
-                  ),
-                  Text(
-                    'Banana Cake \n 40 \$',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.shopping_cart,
-                        color: Colors.blue
+                    Text(
+                      'Banana Cake \n 40 \$',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.),
+                    ),
+                  ])
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                    decoration: BoxDecoration(
+                        border: Border(
+                      top: BorderSide(
+                        color: Colors.blue,
+                        width: 1.0,
                       ),
-                      Text(
-                        'Add to cart',
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    ],
+                    )),
+                    child:Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          color: Colors.blue
+                        ),
+                        Text(
+                          'Add to cart',
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ],
+                    ), 
                   ),
+                ),
               ],
             ),
+            Positioned(
+              top:10,
+              right: 10,
+              child:Text(
+                'Hot',
+                style: TextStyle(color: Colors.blue),
+              ),
+            ),
+          ],
+        ),),
           ),
-      )
-    );
+      );
   }
 }
 
