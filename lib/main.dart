@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  static const String titleAppBar = 'Introduce Cake';
+  static const String titleCakeNews = 'Cake News';
+  static const String titleCakeIsBoughtALog = 'Cake is bought a lot';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Welcome to Flutter',
       home: Scaffold(
         appBar: AppBar(
           leading: Builder(builder: (BuildContext context) {
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
             );
           }),
           centerTitle: true,
-          title: const Text('Introduce Cake'),
+          title: const Text(titleAppBar),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -27,32 +30,28 @@ class MyApp extends StatelessWidget {
         ),
         body: Container(
           margin: EdgeInsets.all(10.0),
-          child: Column(
-            children: [
+          child: Column(children: [
             Expanded(
-              flex: 4,
-              child:Column(
-                children: [
-                  TileCake(
-                    text: 'Cake News',
-                  ),
-                  ListCakeHorizontal()
-                ],
-              )
-            ),
+                flex: 4,
+                child: Column(
+                  children: [
+                    TileCake(
+                      text: titleCakeNews,
+                    ),
+                    ListCakeHorizontal()
+                  ],
+                )),
             Expanded(
-              flex: 5,
-              child:Column(
-                children: [
-                  TileCake(
-                    text: 'Cake is bought a lot',
-                  ),
-                  ListCakeVertical(),                   
-                ],
-              )
-            ),
-            ]
-          ),
+                flex: 5,
+                child: Column(
+                  children: [
+                    TileCake(
+                      text: titleCakeIsBoughtALog,
+                    ),
+                    ListCakeVertical(),
+                  ],
+                )),
+          ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed, // This is all you need!
@@ -84,70 +83,70 @@ class MyApp extends StatelessWidget {
 }
 
 class ListCakeHorizontal extends StatelessWidget {
-
   /// Here is your constructor
   ListCakeHorizontal({Key key});
 
   @override
   Widget build(BuildContext context) {
-    return _buildListCakeHorizontal();
+    return _buildListCakeHorizontal(context);
   }
 
-  Widget _buildListCakeHorizontal() {
+  Widget _buildListCakeHorizontal(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemExtent: 170,
-        scrollDirection: Axis.horizontal,
-        itemCount: 20,
-        itemBuilder: (context, index) => Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-                    child: Text(
-                      'New',
-                      style: TextStyle(color: Colors.blue),
-                    ),                  
-                  ),
-                ),
-                Expanded(
-                  child:Icon(
-                    Icons.cake,
-                    color: Colors.blue,
-                    size: 60.0,
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    color: Colors.blue,
-                    child: Row(
+          itemExtent: (MediaQuery.of(context).size.width - 20) / 2,
+          scrollDirection: Axis.horizontal,
+          itemCount: 20,
+          itemBuilder: (context, index) => Card(
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
-                          child: Text(
-                            'Banana Cake \n 40 \$',
-                            textAlign: TextAlign.center,
-                            style:
-                                TextStyle(color: Colors.white),
+                          flex: 6,
+                          child: Icon(
+                            Icons.cake,
+                            color: Colors.blue,
+                            size: 70.0,
                           ),
-                        )
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            color: Colors.blue,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    'Banana Cake \n 40 \$',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
-                  ),
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Text(
+                        'New',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-        )
-      ),
+              )),
     );
   }
 }
 
 class ListCakeVertical extends StatelessWidget {
-
   /// Here is your constructor
   ListCakeVertical({Key key});
 
@@ -164,48 +163,66 @@ class ListCakeVertical extends StatelessWidget {
           crossAxisCount: 2,
         ),
         itemBuilder: (context, index) => Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                  Align(
-                    alignment: Alignment.topRight,
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                      flex: 6,
+                      child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Icon(
+                              Icons.cake,
+                              color: Colors.blue,
+                              size: 70.0,
+                            ),
+                            Text(
+                              'Banana Cake \n 40 \$',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ])),
+                  Expanded(
+                    flex: 2,
                     child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-                      child: Text(
-                        'Hot',
-                        style: TextStyle(color: Colors.blue),
-                      ),                  
+                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      decoration: BoxDecoration(
+                          border: Border(
+                        top: BorderSide(
+                          color: Colors.grey.withOpacity(0.5),
+                          width: 0.7,
+                        ),
+                      )),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.shopping_cart, color: Colors.blue),
+                          Text(
+                            'Add to cart',
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  Icon(
-                    Icons.cake,
-                    color: Colors.blue,
-                    size: 60.0,
-                  ),
-                  Text(
-                    'Banana Cake \n 40 \$',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.shopping_cart,
-                        color: Colors.blue
-                      ),
-                      Text(
-                        'Add to cart',
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    ],
-                  ),
-              ],
-            ),
+                ],
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Text(
+                  'Hot',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            ],
           ),
-      )
+        ),
+      ),
     );
   }
 }
@@ -235,7 +252,7 @@ class TileCake extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          this.text,
+          text,
           textAlign: TextAlign.left,
           style: TextStyle(fontSize: 20),
         ),
