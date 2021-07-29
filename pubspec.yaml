@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  big_tip: ^1.1.1
+  pedantic: ^1.8.0
 
 
   # The following adds the Cupertino Icons font to your application.
